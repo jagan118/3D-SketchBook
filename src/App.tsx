@@ -9,16 +9,15 @@ export default function App() {
       : "/sketchbook/";
 
   return (
-    <div
-      style={{
-        width: "100vw",
-        height: "100vh",
-        margin: 0,
-        padding: 0,
-        overflow: "hidden",
-      }}
-    >
-      <Sketchbook assetBaseUrl={assetBase} />
+    <div className="app-shell">
+      <header className="app-shell__header">
+        <h1>Singapore Sketchbook</h1>
+        <p>Made with Love by Jagan “Jackk”</p>
+      </header>
+      <Sketchbook
+        className="app-shell__sketchbook"
+        assetBaseUrl={assetBase}
+      />
     </div>
   );
 }

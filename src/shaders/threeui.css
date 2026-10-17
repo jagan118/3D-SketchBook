@@ -1,8 +1,43 @@
 .app-shell {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   min-height: 0;
   overflow: hidden;
+  background: #ece7dc;
+}
+
+.app-shell__header {
+  flex: none;
+  padding: 12px 16px 8px;
+  color: #2b2721;
+  text-align: center;
+}
+
+.app-shell__header h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(23px, 5vw, 30px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.app-shell__header p {
+  margin-top: 3px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  color: rgba(43, 39, 33, 0.62);
+}
+
+.sketchbook.app-shell__sketchbook {
+  flex: 1 1 0;
+  width: 100%;
+  height: auto;
+  min-height: 0;
 }
 
 .sketchbook,
