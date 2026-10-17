@@ -8,5 +8,12 @@ const HOST_STYLE = "<style id=\"threeui-sketchbook-host\">\nhtml,body,.page{widt
 export function createSketchbookDocument(assetBaseUrl = "/sketchbook/") {
   const base = assetBaseUrl.endsWith("/") ? assetBaseUrl : `${assetBaseUrl}/`;
   const withAssets = CANONICAL_SKETCHBOOK_HTML.replaceAll("sketchbook/", base);
-  return withAssets.replace("</head>", `${HOST_STYLE}</head>`);
+  const withArrowPointerGuard = withAssets.replace(
+    "stage.addEventListener('pointerdown',e=>{\n  if(e.button!==0)return;\n  e.preventDefault();",
+    "stage.addEventListener('pointerdown',e=>{\n  if(e.target.closest('.sb-arrow'))return;\n  if(e.button!==0)return;\n  e.preventDefault();",
+  );
+  if (withArrowPointerGuard === withAssets) {
+    throw new Error("Could not install sketchbook arrow pointer guard.");
+  }
+  return withArrowPointerGuard.replace("</head>", `${HOST_STYLE}</head>`);
 }
